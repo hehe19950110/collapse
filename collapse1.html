@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>collapse折叠面板</title>
+  <style>
+    .container{
+      max-width: 800px;
+      margin: 30px auto;
+      border-radius: 5px;
+      box-shadow: 0 0 0 4px rgba(0, 0, 0 ,0.3);
+      padding: 16px;
+    }
+
+    .collapse{
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .collapse .item{
+      border-top: 1px solid rgb(172, 172, 172);
+      cursor: pointer;
+    }
+
+    .collapse .item:last-child{
+      border-bottom: 1px solid rgb(172, 172, 172);
+    }
+
+    .collapse .item-header{
+      display: flex;
+      align-items: center;
+      line-height: 40px;
+      color:#333;
+      font-weight: bold;
+    }
+
+    .collapse .item-header::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid rgb(2, 2, 2);
+      border-right: 1px solid rgb(2, 2, 2);
+      margin-left: auto;
+      transform: rotate(45deg);
+      transition: all 0.3s;
+    }
+
+    .collapse .item.active .item-header::after {
+      transform: rotate(135deg);
+    }
+
+    .collapse .item-content{
+      color:#666;
+      font-size: 14px;
+      overflow: hidden;
+      height: 0;
+      transition: all 0.3s;
+    }
+
+    .collapse .item.active .item-content{
+      height: auto;
+      padding-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>collapse折叠面板1</h1>
+    <div class="collapse">
+
+      <div class="item active">
+        <div class="item-header">一致性</div>
+        <div class="item-content">
+          与现实生活一致:XXXXXX,比如:XXXXXXX。
+          <br>
+          与界面中一致:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">反馈</div>
+        <div class="item-content">
+          控制反馈:XXXXXX,比如:XXXXXXX。
+          <br>
+          页面反馈:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">效率</div>
+        <div class="item-content">
+          简化流程:XXXXXX,比如:XXXXXXX。
+          <br>
+          清晰明了:XXXXXX,比如:XXXXXXX。
+          <br>
+          帮助用户识别:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">可控</div>
+        <div class="item-content">
+          用户决策:XXXXXX,比如:XXXXXXX。
+          <br>
+          结果可控:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>collapse折叠面板2</h1>
+    <div class="collapse">
+
+      <div class="item active">
+        <div class="item-header">一致性</div>
+        <div class="item-content">
+          与现实生活一致:XXXXXX,比如:XXXXXXX。
+          <br>
+          与界面中一致:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">反馈</div>
+        <div class="item-content">
+          控制反馈:XXXXXX,比如:XXXXXXX。
+          <br>
+          页面反馈:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">效率</div>
+        <div class="item-content">
+          简化流程:XXXXXX,比如:XXXXXXX。
+          <br>
+          清晰明了:XXXXXX,比如:XXXXXXX。
+          <br>
+          帮助用户识别:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-header">可控</div>
+        <div class="item-content">
+          用户决策:XXXXXX,比如:XXXXXXX。
+          <br>
+          结果可控:XXXXXX,比如:XXXXXXX。
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+class collapse {
+  constructor($container,type = 1) {
+    this.$container = $container
+    this.$$items = $container.querySelectorAll('.item')
+    this.type = type
+
+    this.bind()
+  }
+
+  bind() {
+    let self = this
+    this.$$items.forEach($item => {
+      $item.onclick = function() {
+        if(self.type === 2){
+          this.classList.toggle('active')
+        }else if(self.type === 1){
+          self.$$items.forEach($item => $item.classList.remove('active'))
+          this.classList.add('active')
+        }
+      }
+    })
+  }
+}
+
+new collapse(document.querySelectorAll('.collapse')[0])
+new collapse(document.querySelectorAll('.collapse')[1])
+
+
+
+</script>
+</body>
+</html>
