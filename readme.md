@@ -5,6 +5,7 @@ collapse折叠面板（手风琴效果）
 为使 overflow 有效果，块级容器必须有一个指定的高度！！！（height或者max-height）或者将white-space设置为nowrap。
 
  { overflow: hidden; /* 内容将被剪裁以适合填充框；不显示滚动条 */  }
+ 
  { overflow: scroll; /* 内容将被剪裁以适合填充框；浏览器显示滚动条，无论是否实际剪切了任何内容，始终显示滚动条 */  }
  
  2、小标题右边的^
